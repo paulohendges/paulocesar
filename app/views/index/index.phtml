@@ -14,6 +14,7 @@
 
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="<?= $this->url->getBaseUri() ?>inputmask/dist/jquery.inputmask.bundle.js"></script>
         <script src="<?= $this->url->getBaseUri() ?>materialize/materialize/js/materialize.js"></script>
         <script src="<?= $this->url->getBaseUri() ?>js/init.js"></script>
 
@@ -377,7 +378,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12 m3 offset-m3">
-                                            <input id="email" name="telefone" type="text" placeholder="Telefone para Contato">
+                                            <input id="telefone" name="telefone" type="text" placeholder="Telefone para Contato" required="required" pattern="[0-9]+$">
                                             <label for="telefone" class="">Telefone</label>
                                         </div>
                                         <div class="col s12 m2">
@@ -413,7 +414,7 @@
                         <h5 class="white-text">Contate-me</h5>
                         <ul>
                             <li style="margin-right: 5px;">Telefone: <span class="brown-text text-lighten-3">(51) 99291-3632</span></li>
-                            <li style="margin-right: 5px;">E-mail: <span class="brown-text text-lighten-3">paulo.hendges@gmail.com</span></li>
+                            <li style="margin-right: 5px;">E-mail: <a href="mailto:paulo.hendges@gmail.com"><span class="brown-text text-lighten-3">paulo.hendges@gmail.com</span></a></li>
                         </ul>
                     </div>
                     <div class="col l3 s12">
@@ -421,10 +422,10 @@
                     <div class="col l3 s12">
                         <h5 class="white-text">Mídias Sociais</h5>
                         <ul style="display: inline-flex">
-                            <li style="margin-right: 5px;"><a href="#!"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/facebook.png" class="icons"></i></a></li>
-                            <li style="margin-right: 5px;"><a href="#!"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/instagram.png" class="icons"></i></a></li>
-                            <li style="margin-right: 5px;"><a href="https://github.com/paulohendges"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/github.png" class="icons"></i></a></li>
-                            <li style="margin-right: 5px;"><a href="#!"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/linkedin.png" width="45" height="45" class="icons"></i></a></li>
+                            <li style="margin-right: 5px;"><a href="#!"><i class="material-icons" target="_blank"><img src="<?= $this->url->getBaseUri() ?>img/facebook.png" class="icons"></i></a></li>
+                            <li style="margin-right: 5px;"><a href="https://www.instagram.com/juniorhendges/" target="_blank"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/instagram.png" class="icons"></i></a></li>
+                            <li style="margin-right: 5px;"><a href="https://github.com/paulohendges" target="_blank"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/github.png" class="icons"></i></a></li>
+                            <li style="margin-right: 5px;"><a href="https://www.linkedin.com/in/paulo-cesar-hendges-jr-2a521a6b/" target="_blank"><i class="material-icons"><img src="<?= $this->url->getBaseUri() ?>img/linkedin.png" width="45" height="45" class="icons"></i></a></li>
                         </ul>
                     </div>
                 </div>

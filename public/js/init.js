@@ -1,5 +1,9 @@
 (function ($) {
     $(function () {
+        // mask
+        $('#telefone').inputmask('(99) 9 9999-9999');
+        
+        // scrollspy
         $('.scrollspy').scrollSpy({scrollOffset: 80});
         var options = [{
                 selector: '#img1', offset: 300, callback: function (el) {
@@ -21,12 +25,22 @@
 
         Materialize.scrollFire(options);
 
+        // menu
         $('a.nav-links').click(function () {
             $(this).closest('ul').find('li').removeClass('active');
             $(this).parent().addClass('active');
         })
+        
+        // nav parallax
         $('.button-collapse').sideNav({'closeOnClick': true});
         $('.parallax').parallax();
+        
+        // validation form
+        $.validator.addMethod("telefoneCel", function(value) {
+            valor = value.replace(/[^0-9]/ig,'').length;
+            return valor < 11 ? false : true;
+        }, "Digite um Telefone válido");
+        
         $("form[name='formContato']").validate({
             rules: {
                 nome: {
@@ -38,7 +52,9 @@
                     email: true
                 },
                 telefone: {
-                    required: true
+                    required: true,
+                    telefoneCel: true,
+                    maxlength: 16
                 },
                 textoContato: {
                     required: true,
@@ -56,7 +72,8 @@
                     email: "Informe um E-mail Válido"
                 },
                 telefone: {
-                    required: "Campo Obrigatório"
+                    required: "Campo Obrigatório",
+                    maxlength: "Digite um telefone válido"
                 },
                 textoContato: {
                     required: "Informe uma Mensagem",
@@ -78,7 +95,38 @@
 
             },
             submitHandler: function (form) {
-                form.submit();
+                $('button[name="btnContato"]').html('Aguarde...');
+                $('button[name="btnContato"]').addClass('disabled');
+                
+                var chk = 0;
+                if ($('input[name="whats"]').is(':checked')) {
+                    chk = $('input[name="whats"]').val();
+                } 
+                
+                $.ajax({
+                    url: '',
+                    type: 'POST',
+                    data: {
+                        nome: $('input[name="nome"]').val(),
+                        email: $('input[name="email"]').val(),
+                        telefone: $('input[name="telefone"]').val(),
+                        whatsapp: chk,
+                        mensagem: $('textarea[name="textoContato"]').val()
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            Materialize.toast(data.msg, 3000, 'rounded');
+                            form.reset();
+                            $('button[name="btnContato"]').html('CONTATO');
+                            $('button[name="btnContato"]').removeClass('disabled');
+                        } else {
+                            Materialize.toast(data.msg, 3000, 'rounded');
+                            $('button[name="btnContato"]').html('CONTATO');
+                            $('button[name="btnContato"]').removeClass('disabled');
+                            return false;
+                        }
+                    }
+                });
             }
         });
     }); // end of document ready

@@ -11,3 +11,12 @@ $loader->registerDirs(
         $config->application->modelsDir
     ]
 )->register();
+
+$loader->registerNamespaces(
+    array(
+       "Model" => $config->application->modelsDir,
+        "Db" => $config->application->libraryDir.'/db',
+        "App" => $config->application->libraryDir.'/app',
+        "PHPMailer" => $config->application->libraryDir.'/phpmailer/src',
+    )
+)->register();
