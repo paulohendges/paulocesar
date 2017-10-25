@@ -9,7 +9,7 @@ defined('APP_PATH') || define('APP_PATH', BASE_PATH . '/app');
 return new \Phalcon\Config([
     'database' => [
         'adapter'     => 'Mysql',
-        'host'        => 'localhost',
+        'host'        => 'mysql857.umbler.com',
         'username'    => 'phendges',
         'password'    => 'BjZ96a{OG.{t',
         'dbname'      => 'paulocesarweb',
