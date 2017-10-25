@@ -10,8 +10,8 @@ return new \Phalcon\Config([
     'database' => [
         'adapter'     => 'Mysql',
         'host'        => 'localhost',
-        'username'    => 'root',
-        'password'    => '',
+        'username'    => 'phendges',
+        'password'    => 'BjZ96a{OG.{t',
         'dbname'      => 'paulocesarweb',
         'charset'     => 'utf8',
     ],
